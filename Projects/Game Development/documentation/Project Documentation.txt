@@ -1,4 +1,4 @@
-﻿SYSTEM OVERVIEW
+SYSTEM OVERVIEW
 
 I created a 2D space shooter game using the Bevy game engine. It consists of several systems that handle different aspects 
 of the game, including player ship movement, enemy ship spawning, laser shooting, collision detection, explosions, and 
@@ -123,10 +123,3 @@ Here are helper functions which I used for different collision check purposes:
       result in a collision with any existing enemy ship in the game world. 
 
     * laser_collides_with_ship: Checks if a laser fired by either the player or enemy collides with any ship in the game. 
-
-
-VIDEO DEMONSTRATION
-
-Here is a link to a video demonstration of my game:
-
-    * https://www.youtube.com/watch?v=D3mNBWfwQow
