@@ -1,0 +1,102 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% load util %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}">
+{% endblock head %}
+
+{% block content %}
+
+<style>
+    body {background-color: white;}   
+
+    .login {
+        font-size: 23px;
+        color: white;
+        width: 40%;
+        text-align: center;
+        width: 150px;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    li {
+        float: left;
+    }
+    h1 {
+        text-align: center;
+        font-size: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+</style>
+<script>
+    function add_cart_item(item_id){ 
+        console.log("in add_cart_item " + item_id);
+        var form_data = new FormData();
+        form_data.append("id", item_id); 
+        var xml_http = new XMLHttpRequest();
+        xml_http.onreadystatechange = function(){
+            if(xml_http.readyState == 4 && xml_http.status == 200){
+                var el = document.getElementById("cart-total"); //doesn't currently handle out-of-stock case
+                el.innerHTML = parseInt(el.innerHTML) + 1;
+            }
+        }
+        xml_http.open("post", "/add_to_cart");
+        xml_http.setRequestHeader("X-CSRFToken", get_cookie("csrftoken"));
+        xml_http.send(form_data);
+    }
+    function get_cookie(name){
+        if(document.cookie.length > 0){
+            c_start = document.cookie.indexOf(name + "=");
+            if(c_start != -1){
+                c_start = c_start + name.length +1;
+                c_end = document.cookie.indexOf(";", c_start);
+                if(c_end == -1) c_end = document.cookie.length;
+                return decodeURIComponent(document.cookie.substring(c_start, c_end));
+            }
+        }
+        return "";
+    }
+</script>
+<body>
+
+    <h1>{{ brand_name }}</h1>
+
+    <ul class="item-container row-cols-1">
+        {% for item, prices in brand_items.items %}
+            <li class="item">
+                <a class="hover" href="/item/{{ item.id }}"> 
+                    <img src="{{ prices|get:"image" }}" width="175px" height="175px">
+                </a>
+                <br>
+                <button class="item-add" onclick="add_cart_item({{item.id}})"><span>Add to cart</span><i class="/"></i></button>
+                <br>
+                <a class="hover" href="/item/{{ item.id }}"> 
+                    <b class="item-name">{{ item.name }}</b>
+                </a>
+                <p class="item-company">{{ "by " }}{{ prices|get:"brand" }}</p>
+                {% if item.priceCents == item.salePrice %}
+                    <p class="item-price">${{ prices|get:"price" }}</p>
+                {% else %}
+                    <p class="item-original-price">${{ prices|get:"price" }}</p>
+                    <p class="item-new-price">${{ prices|get:"sale" }}</p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+
+</body>
+
+
+
+{% endblock content %}

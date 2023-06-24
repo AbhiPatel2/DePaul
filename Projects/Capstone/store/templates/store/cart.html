@@ -1,0 +1,114 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% load util %}
+
+{% block content %}
+
+
+
+<script>
+function add_cart_item_1(item_id){
+    console.log("in add_cart_item " + item_id);
+    var form_data = new FormData();
+    form_data.append("id", item_id); 
+    var xml_http = new XMLHttpRequest();
+    xml_http.onreadystatechange = function(){
+        if(xml_http.readyState == 4 && xml_http.status == 200){
+            alert("item added.");
+        }
+    }
+    xml_http.open("post", "/cart");
+    xml_http.setRequestHeader("X-CSRFToken", get_cookie("csrftoken"));
+    xml_http.send(form_data);
+}
+
+function add_cart_item(item_id){
+    var x = document.add_item_form
+    x.add_cart_item_id.value = item_id
+    x.submit()
+}
+
+function remove_cart_item(item_id){
+    var x = document.add_item_form
+    x.remove_cart_item_id.value = item_id
+    x.submit()
+}
+
+function get_cookie(name){
+    if(document.cookie.length > 0){
+        c_start = document.cookie.indexOf(name + "=");
+        if(c_start != -1){
+            c_start = c_start + name.length +1;
+            c_end = document.cookie.indexOf(";", c_start);
+            if(c_end == -1) c_end = document.cookie.length;
+            return decodeURIComponent(document.cookie.substring(c_start, c_end));
+        }
+    }
+    return "";
+}
+
+</script>
+
+
+<div class = "row">
+    <div class="col-lg-12">
+        <div class = "box-element">
+            <a class = "btn btn-outline-dark" href="{% url 'store' %}">&#x2190;Continue Shopping</a>
+            <br>
+            <br>
+
+            <table class ="table">
+                <tr>
+                    <th><h5>Items: <strong> {{cart_item_count}} </strong></h5></th>
+                    <th><h5>Total: <strong> ${{cart_grandTotal|centsToStr}} </strong> </h5></h5></th>
+                    <th>
+                        <a style="float:right;margin:5px" class="btn btn-success" href="{% url 'checkout' %}">Continue to Payment</a>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <br>
+
+        <div class = "box-element">
+            <div class = "cart-row">
+                <div style="flex:2"></div>
+                <div style="flex:2"><strong>Item</strong></div>
+                <div style="flex:1"><strong>Price</strong></div>
+                <div style="flex:1"><strong>Quantity</strong></div>
+                <div style="flex:1"><strong> Total</strong></div>
+            </div>
+            
+
+            {% for key, ii in cart.items %}
+
+            <div class="cart-row" >
+                <div style="flex:2"><img class= "cart_image" src={{ii.image}} width="105" length="105"></div>
+                <div style="flex:2">{{ii.name}}</div>
+                <div style="flex:1">${{ii.salePrice|centsToStr}}</div>
+                <div style="flex:1">
+                    <p class="quantity">{{ii.qty}}</p>
+                    <div class = "quantity">
+                        <img class="chg-quantity" src="{% static 'images/arrow-up.png' %}" onclick="add_cart_item({{ii.id}})">
+                        <img class="chg-quantity" src="{% static 'images/arrow-down.png' %}" onclick="remove_cart_item({{ii.id}})">
+                    </div>
+                    
+                </div>
+                <div style="flex:1">${{ii.total|centsToStr}}</div>
+
+            </div>
+
+            {% endfor %}
+            
+
+        </div>
+    </div>
+</div>
+
+<form name="add_item_form" action="/cart" method="POST">
+    <input type="hidden" name="add_cart_item_id"  value="" id="add_cart_item_id">
+    <input type="hidden" name="remove_cart_item_id"  value="" id="remove_cart_item_id">
+    {% csrf_token %}
+</form>
+
+
+{% endblock content %}

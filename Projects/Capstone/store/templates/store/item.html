@@ -1,0 +1,170 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% load util %}
+
+{% block content %}
+
+<style>
+    h1 {
+        position: absolute; 
+        top: 150px; 
+        left: 40%;
+        font-size: 50px;
+    }
+    h2.brand {
+        position: absolute; 
+        top: 210px; 
+        left: 40%;
+        font-size: 25px;
+    }
+    h2.saleprice {
+        position: absolute; 
+        top: 300px; 
+        left: 40%;
+        font-size: 25px;
+        color: green
+    }
+    h3 {
+        position: absolute; 
+        font-size: 15px;
+        font-weight: bold;
+    }
+    h3.regularprice {
+        position: absolute; 
+        top: 330px; 
+        left: 40%;
+        font-size: 15px;
+        color: red
+    }
+    h4.size {
+        position: absolute; 
+        font-size: 15px;
+        top: 270px; 
+        left: 40%;
+    }
+    h4.description {
+        font-size: 15px;
+        font-weight: bold;
+    }
+    
+    img.image {
+        position: absolute; 
+        top: 200px;
+        left: 10%;
+        transition: 0.5s all ease-in-out;
+    }
+    img.image:hover {
+        transform: scale(1.25);
+    }
+
+    #male {
+        position: absolute;
+        width: 80px;
+        height: 20px;
+        top: 245px; 
+        left: 40%;
+        background-color: blue;
+        color: white;
+    }
+    #female {
+        position: absolute;
+        width: 80px;
+        height: 20px;
+        top: 245px; 
+        left: 40%;
+        background-color: pink;
+        color: white;
+    }
+    #unisex {
+        position: absolute;
+        width: 80px;
+        height: 20px;
+        top: 245px; 
+        left: 40%;
+        background-color: black;
+        color: white;
+    }
+    #description {
+        position: absolute;
+        top: 360px; 
+        left: 40%;
+        font-size: 15px;
+        width: 600px;
+        border: 2px solid black;
+    }
+    button.item-add {
+        position: absolute;
+        font-size: 20px;
+	    border: 2px solid rgb(83, 0, 83);
+	    border-radius: 8px;
+	    background-color: #e3baff;
+        top: 565px;
+        left: 40%;
+    }
+
+</style>
+<script>
+    function add_cart_item(item_id){ 
+        console.log("in add_cart_item " + item_id);
+        var form_data = new FormData();
+        form_data.append("id", item_id); 
+        var xml_http = new XMLHttpRequest();
+        xml_http.onreadystatechange = function(){
+            if(xml_http.readyState == 4 && xml_http.status == 200){
+                var el = document.getElementById("cart-total"); //doesn't currently handle out-of-stock case
+                el.innerHTML = parseInt(el.innerHTML) + 1;
+            }
+        }
+        xml_http.open("post", "/add_to_cart");
+        xml_http.setRequestHeader("X-CSRFToken", get_cookie("csrftoken"));
+        xml_http.send(form_data);
+    }
+    function get_cookie(name){
+        if(document.cookie.length > 0){
+            c_start = document.cookie.indexOf(name + "=");
+            if(c_start != -1){
+                c_start = c_start + name.length +1;
+                c_end = document.cookie.indexOf(";", c_start);
+                if(c_end == -1) c_end = document.cookie.length;
+                return decodeURIComponent(document.cookie.substring(c_start, c_end));
+            }
+        }
+        return "";
+    }
+</script>
+
+<body>
+
+    <h1> {{ item.name }} </h1>
+
+    <h2 class="brand"> {{ "by " }}{{ item.brand }} </h2>
+
+    {% if item.gender == "M" %}
+    <div id="male">
+        <h3> {{ "Gender: " }}{{ item.gender }}</h3>
+    </div>
+    {% elif item.gender == "F" %}
+    <div id="female">
+        <h3> {{ "Gender: " }}{{ item.gender }}</h3>
+    </div>
+    {% else %}
+    <div id="unisex">
+        <h3> {{ "Gender: " }}{{ item.gender }}</h3>
+    </div>
+    {% endif %}
+
+    <h4 class="size"> {{ "Size: "}} {{item.sizeOz}} {{ " oz" }}</h4>
+
+    <h2 class="saleprice"> {{ "Sale Price: $" }}{{item.salePrice|centsToStr}}</h2>
+    <h3 class="regularprice"> {{ "Regular Price: $" }}{{item.priceCents|centsToStr}}</h3>
+
+    <div id="description">
+        <h4 class="description"> {{ "Description: " }} </h4>
+        <p> {{item.description}}</p>
+    </div>
+    <button class="item-add" onclick="add_cart_item({{item.id}})"><span>Add to cart</span><i class="/"></i></button>
+    <img class="image" src=" {{ item.image }}" width="350px" height="400px">
+
+</body>
+
+{% endblock content %}

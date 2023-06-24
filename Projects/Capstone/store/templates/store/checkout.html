@@ -1,0 +1,64 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<form>
+    <div>
+      <h3 class="checkout_labels">Billing Address</h3>
+      <label>Full Name</label>
+      <input placeholder="John M. Doe">
+      <label>Email</label>
+      <input placeholder="johndoe@example.com">
+      <label>Address</label>
+      <input placeholder="123 S. State Street">
+      <label>City</label>
+      <input placeholder="Chicago">
+    </div>
+
+    <div>
+      <label>State</label>
+      <input placeholder="IL">
+      <label>Zip</label>
+      <input placeholder="12345">
+    </div>
+</form>
+<hr>
+<form>
+    <div>
+        <h3 class="checkout_labels">Shipping Address</h3>
+            <label>Full Name</label>
+            <input placeholder="John M. Doe">
+            <label>Address</label>
+            <input placeholder="123 S. State Street">
+            <label>City</label>
+            <input placeholder="Chicago">
+            <label>State</label>
+            <input placeholder="IL">
+            <label>Zip</label>
+            <input placeholder="12345">
+    </div>
+</form>
+<hr>
+</form>
+    <div>
+      <h3 class="checkout_labels">Payment</h3>
+      <label >Card Holder</label>
+      <input placeholder="John M. Doe">
+      <label >Credit Card number</label>
+      <input placeholder="1111-2222-3333-4444">
+      <label >Exp Month</label>
+      <input placeholder="November">
+      <label >Exp Year</label>
+      <input placeholder="2028">
+    </div>
+    
+    <div>
+        <label>CVV</label>
+            <input placeholder="123">
+    </div>
+</form>
+<hr>
+<button type="submit" class="btn btn-success">Submit Order</button>
+
+
+{% endblock content %}

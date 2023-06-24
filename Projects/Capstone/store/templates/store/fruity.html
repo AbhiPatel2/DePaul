@@ -1,0 +1,76 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<body>
+    
+<div id="main">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <div id="topmiddle">
+        <a class="title" href="/"> Perfume </a> 
+    </div>
+
+    <div id="topright"> 
+        <a class="hover" href="/login"> Login </a> 
+        &nbsp; &nbsp; &nbsp;
+        <a class="hover" href="/signup"> Sign Up </a> 
+        &nbsp; &nbsp; &nbsp;
+        <a class="hover" href="/cart"> Cart </a> 
+    </div>
+
+    <div id="navigationbar"> 
+        <div><a href="/">Home</a></div>
+        <div><a href="/">Fragrances</a></div>
+        <div><a href="/">Brands</a></div>
+        <div><a href="/quiz">Quiz</a></div>
+    </div>
+
+
+    <h2 class="hr-lines1">Best Sellers</h2>
+
+    <div id="bestsellers1" class="bestsellers">
+        <img src="https://m.media-amazon.com/images/I/71ecjSJa1oS.jpg" width="175px" height="175px">
+        <br>
+        <button class="hover"><span>Add to cart</span><i class="/"></i></button>
+
+        <a class="hover" href="/"> 
+            <b>Sauvage</b>
+        </a>
+        <p class="company"> by Dior </p>
+        <p class="price"> $145 </p>
+    </div>
+
+    <div id="bestsellers2" class="bestsellers">
+        <img src="https://dybskkbnjb5ca.cloudfront.net/img/prod/mp-5028.webp" width="175px" height="175px">
+        <br>
+        <a class="hover" href="/"> 
+            <b>Bleu de Chanel</b>
+        </a>
+        <p class="company">by Chanel</p>
+        <p class="price"> $115</p>
+    </div>
+
+    <div id="bestsellers3" class="bestsellers">
+        <img src="https://dybskkbnjb5ca.cloudfront.net/img/prod/mp-8055.webp" width="175px" height="175px">
+        <br>
+        <a class="hover" href="/"> 
+            <b>Coco Mademoiselle</b>
+        </a>
+        <p class="company">by Chanel</p>
+        <p class="price">$122</p>
+    </div>
+
+    <div id="bestsellers4" class="bestsellers">
+        <img src="https://decantboutique.com/wp-content/uploads/2018/01/Lancome-La-Vie-Est-Belle.jpg" width="175px" height="175px">
+        <br>
+        <a class="hover" href="/"> 
+            <b>La Vie Est Belle</b>
+        </a>
+        <p class="company">by Lancome</p>
+        <p class="price">$80</p>
+    </div>
+</div>
+
+</body>
+
+{% endblock content %}

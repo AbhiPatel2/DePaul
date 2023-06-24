@@ -1,0 +1,58 @@
+.item-container {
+    margin: 0;
+    padding: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 15px;
+    position: relative;
+    width: 90%;
+    left: 5%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.item {
+    background-color: pink;
+    text-align: center;
+    background-color: initial !important;
+    max-width: 175px !important;
+    margin-left: 6%;
+    margin-right: 6%;
+    display: inline-block;
+    transform: scale(100%);
+    transition: transform 0.2s;
+}
+
+.item:hover {
+    transform: scale(105%);
+}
+
+.item-add {
+	font-size: 12px;
+	border: 1px solid rgb(83, 0, 83);
+	border-radius: 4px;
+	background-color: #e3baff;
+}
+
+.item-name {
+    width: 100%;
+    font-size: 18px;
+}
+
+.item-company {
+    font-size: 16px;
+}
+
+.item-price, .item-new-price {
+    font-size: 16px;
+}
+
+.item-new-price {
+    font-weight: 700;
+}
+
+.item-original-price {
+    font-size: 14px;
+    text-decoration: line-through;
+}

@@ -1,0 +1,172 @@
+{% extends 'store/store.html' %}
+{% load static %}
+{% block content %}
+<style>
+
+    body {background-color: white;}   
+
+
+    div#topmiddle {
+        position: absolute;
+        box-sizing: border-box;
+        height: 125px;
+        width: 100%;
+        top: 0px;
+        text-align: center;
+    }
+
+    div#middle {
+        position: absolute;
+        box-sizing: border-box;
+        background-color: white;
+        border: 5px solid pink;
+        height: 400px;
+        width: 400px;
+        top: 210px;
+        right:500px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 70px;
+        color: purple;
+        font-family: cursive;
+    }
+    
+    h2 {
+        font-size: 40px;
+        color:purple;
+    }
+
+    td {
+        font-size: 40px;
+        color:purple;
+        padding:10px 50px;
+    }
+
+    input {
+        height: 40px;
+    }
+
+    .login {
+        font-size: 23px;
+        color: white;
+        width: 40%;
+        text-align: center;
+        width: 150px;
+    }
+
+    a.title {
+        font-size: 70px;
+        color: purple;
+        font-family: cursive;
+        text-decoration: none;
+        top: 10px;
+    }
+
+    a.hover {
+        font-size: 25px;
+        color: purple;
+        text-decoration: none;
+    }
+
+    a.hover:hover {
+        text-decoration: underline;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: pink;
+        border-radius: 15px;
+        font-family: cursive;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    /* Change the link color to #111 (black) on hover */
+    li a:hover {
+        background-color: purple;
+    }
+
+
+    td {
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 25px;
+    }
+
+    form  {
+	    position: relative;
+	    width: 100%;
+    }
+
+    table {
+        position: relative;
+        table-layout: fixed;
+	    width: 100%;
+    }
+
+</style>
+
+<body>
+
+    <div id="main">
+
+
+
+        <div id="middle">
+            <h2> Sign Up </h2>
+            <form>
+                <table>
+                    <tr ccolor="white">
+                    
+                        <td> 
+                            <input type="name" size="28" id="name" placeholder="First and Last Name"> 
+                        </td>
+                    </tr>
+                    <tr ccolor="white">
+                    
+                        <td> 
+                            <input type="address" size="28" id="address" placeholder="Address"> 
+                        </td>
+                    </tr>
+                    <tr ccolor="white">
+                    
+                        <td> 
+                            <input type="email" size="28" id="yourEmail" placeholder="Email"> 
+                        </td>
+                    </tr>
+
+                    <tr ccolor="white">
+                        
+                        <td> 
+                            <input type="password" size="28" id="password" placeholder="Password"> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="login" style="background-color: purple;"> Submit </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+{% endblock content %}

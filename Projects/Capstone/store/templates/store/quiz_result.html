@@ -1,0 +1,57 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block head %}
+<script src="{% static 'js/perfume_quiz.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/quiz.css' %}">
+{% endblock head %}
+
+{% block content %}
+<style>
+    h1 {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    h3 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+    p {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: bold
+    }
+    ol {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
+
+<body>
+
+    <h1>Quiz</h1>
+
+    <h3>Analyzing your results</h3>
+    <p> If you chose more of the follow options:</p>
+    <ol>
+        <li>Private Beach/Garden</li>
+        <li>Manhattan</li>
+        <li>Bright color clothing(red, pink, orange)</li>
+        <li>The shoulder to cry on</li>
+        <li>Enjoying sunshine and outdoor festivals</li>
+        <li>An Early Bird</li>
+    </ol>
+    <p>You would enjoy the fresh, fruity, and floral fragrances. Click here to view those scents</p>
+    <br>
+    <br>
+    <p>If you chose more of the following options:</p>
+    <ol>
+        <li>Ski Resort/Hiking</li>
+        <li>Cosmopolitan</li>
+        <li>Dark color clothing(black, brown, gray,etc)</li>
+        <li>The party planner</li>
+        <li>Enjoying pumpkin spice and fall activities</li>
+        <li>A Night Owl</li>
+    </ol>
+    <p>You would enjoy the woody and warm fragrances. Click here to view those scents</p>
+</body>
+{% endblock content %}
+

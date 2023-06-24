@@ -1,0 +1,17 @@
+<!-- templates/registration/login.html -->
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <div id="middle">
+        <h2 class = "title">Log In</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="login" class="btn btn-success" href="{% url 'login' %}">Log In</button>
+        </form>
+        <small style = "text-align:center" > Click <a class="signup_click" href="{% url 'signup' %}">Here</a> to Sign Up </small>
+    </div>
+</body>
+{% endblock content %}

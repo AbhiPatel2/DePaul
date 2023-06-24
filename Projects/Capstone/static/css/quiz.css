@@ -1,0 +1,96 @@
+.container {
+    margin-bottom: 40px;
+}
+
+#shift {
+    box-sizing: border-box;
+    background-image: url("https://png.pngtree.com/background/20210710/original/pngtree-valentine-s-day-solid-color-pink-flowers-background-picture-image_1013195.jpg");
+    background-size: 1300px 1250px;
+    border: 5px solid pink;
+    height: 1250px;
+    width: 1300px;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 80%;
+    left: 10%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 70px;
+    color: purple;
+}
+
+h2 {
+    font-size: 40px;
+    color: purple;
+}
+
+td {
+    font-size: 40px;
+    color: rgb(128, 105, 128);
+    padding: 10px 50px;
+}
+
+input {
+    height: 40px;
+}
+
+.radio-input {
+    height: 15px;
+}
+
+.question {
+    margin-bottom: 30px;
+}
+
+.login {
+    font-size: 23px;
+    color: white;
+    width: 40%;
+    text-align: center;
+    width: 150px;
+}
+
+a.title {
+    font-size: 70px;
+    color: purple;
+    text-decoration: none;
+    top: 10px;
+}
+
+a.hover {
+    font-size: 25px;
+    color: purple;
+    text-decoration: none;
+}
+
+a.hover:hover {
+    text-decoration: underline;
+}
+
+#title {
+    font-size: 40px;
+    color: purple;
+    text-decoration: none;
+    margin-top: 60px;
+    position: relative;
+    text-align: center;
+}
+
+.description {
+    color: purple;
+    font-size: 16px;
+    text-align: center;
+}
+
+.question {
+    font-size: 22px;
+    color: purple;
+    text-decoration: none;
+}
+
+.container {
+    font-family: Arial, Helvetica, sans-serif;
+}

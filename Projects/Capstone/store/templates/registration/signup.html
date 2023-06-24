@@ -1,0 +1,17 @@
+<!-- templates/registration/signup.html -->
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <div id="middle">
+
+        <h2 class = "title">Sign up</h2>
+        <form method="post">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit" class="btn btn-success">Sign Up</button>
+        </form>
+    </div>
+</body>
+{% endblock %}
