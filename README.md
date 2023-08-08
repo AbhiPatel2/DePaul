@@ -1,1 +1,1 @@
-# Depaul
+# DePaul University Academic Projects
